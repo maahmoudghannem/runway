@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:runway/presentation/widgets/categories_item.dart';
 import 'package:runway/presentation/widgets/custom_app_bar.dart';
+import 'package:runway/presentation/widgets/navigation_bar.dart';
 import 'package:video_player/video_player.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _controller = VideoPlayerController.asset("assets/videos/homevideo.mp4")
       ..initialize().then((_) {
         setState(() {
-          _controller.play();
+          _controller.pause();
           _controller.setLooping(true);
         });
       });
@@ -46,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: VideoPlayer(_controller),
                   )
                 : Container(),
-            Gap(25),
+            Gap(30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
@@ -58,8 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Gap(25),
+            Gap(40),
             CategoriesItem(),
+            // Gap(),
+            Divider(thickness: 2, color: Colors.grey[300]),
+            NavigationBarBody(),
           ],
         ),
       ),
