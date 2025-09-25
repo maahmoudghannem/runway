@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runway/presentation/widgets/custom_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,6 +8,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.amber);
+    return Scaffold(
+      appBar: CustomAppBar(
+        preffixIcon: "assets/images/icons/drawer.svg",
+        title: "assets/images/logo/runwaylogo.svg",
+        suffixIcon: "assets/images/icons/notfications.svg",
+      ),
+      backgroundColor: Colors.white,
+      body: Column(children: [
+
+
+      ],
+    ),
+    );
   }
 }

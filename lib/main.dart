@@ -4,9 +4,7 @@ import 'presentation/screens/product_details_screen.dart';
 import 'presentation/screens/products_screen.dart';
 import 'presentation/screens/splash_screen.dart';
 
-void main() {
-  runApp(Runway());
-}
+void main() => runApp(const Runway());
 
 class Runway extends StatelessWidget {
   const Runway({super.key});
