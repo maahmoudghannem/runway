@@ -20,7 +20,7 @@ class Runway extends StatelessWidget {
       },
 
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashScreen.id,
+      initialRoute: ProductsScreen.id,
     );
   }
 }

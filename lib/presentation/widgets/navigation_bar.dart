@@ -45,9 +45,7 @@ class _NavigationBarBodyState extends State<NavigationBarBody> {
       type: BottomNavigationBarType.fixed,
       items: _navItems.map((item) {
         Widget icon = Icon(item["icon"]);
-
         Widget activeIcon = Icon(item["activeIcon"]);
-
         if (item.containsKey("badge")) {
           icon = badges.Badge(
             position: badges.BadgePosition.topEnd(top: -10, end: -12),
