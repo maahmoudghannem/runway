@@ -7,11 +7,13 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.title,
     this.preffixIcon,
     required this.suffixIcon,
+    this.onTap,
   });
 
   final String title;
   final String suffixIcon;
   final String? preffixIcon;
+  final void Function()? onTap;
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -30,7 +32,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset(widget.preffixIcon!, height: 30),
+          GestureDetector(
+            onTap: widget.onTap,
+            child: SvgPicture.asset(widget.preffixIcon!, height: 30),
+          ),
           SvgPicture.asset(widget.title, height: 22),
           SvgPicture.asset(widget.suffixIcon, height: 28),
         ],

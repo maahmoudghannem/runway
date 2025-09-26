@@ -1,4 +1,4 @@
-import 'package:runway/presentation/models/product_model.dart';
+import '../presentation/models/product_model.dart';
 
 List<Product> getProductDetails() => [
   Product(

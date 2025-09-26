@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:runway/data/product_getter.dart';
-import 'package:runway/presentation/models/product_model.dart';
-import 'package:runway/presentation/widgets/snack_bar.dart';
+import '../../data/product_getter.dart';
+import '../models/product_model.dart';
+import 'snack_bar.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard({super.key, required this.isGrid});

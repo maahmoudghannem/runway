@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
-import 'package:runway/presentation/widgets/custom_app_bar.dart';
-import 'package:runway/presentation/widgets/filter_bar.dart';
-import 'package:runway/presentation/widgets/product_card.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/filter_bar.dart';
+import '../widgets/product_card.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
@@ -22,8 +20,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
+        onTap: () => Navigator.pop(context), // back arrow navigation
         title: "assets/images/icons/Men.svg",
-        //TODO: nav.pop
         preffixIcon: "assets/images/icons/arrow-left.svg",
         suffixIcon: "assets/images/icons/bag.svg",
       ),
