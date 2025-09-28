@@ -130,11 +130,15 @@ class _ProductCardState extends State<ProductCard> {
                     vertical: 16,
                   ),
                   child: InkWell(
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      ProductDetailsScreen.id,
-                      arguments: product,
-                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              ProductDetailsScreen(product: product),
+                        ),
+                      );
+                    },
                     child: Hero(
                       tag: product,
                       child: ListTile(
