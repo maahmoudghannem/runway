@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runway/presentation/models/product_model.dart';
 import 'presentation/screens/home_screen.dart';
 import 'presentation/screens/product_details_screen.dart';
 import 'presentation/screens/products_screen.dart';
@@ -16,11 +17,9 @@ class Runway extends StatelessWidget {
         SplashScreen.id: (context) => SplashScreen(),
         HomeScreen.id: (context) => HomeScreen(),
         ProductsScreen.id: (context) => ProductsScreen(),
-        ProductDetailsScreen.id: (context) => ProductDetailsScreen(),
       },
-
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashScreen.id,
+      initialRoute: ProductsScreen.id,
     );
   }
 }

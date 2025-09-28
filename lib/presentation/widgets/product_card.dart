@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:runway/presentation/screens/product_details_screen.dart';
 import '../../data/product_getter.dart';
 import '../models/product_model.dart';
 import 'snack_bar.dart';
@@ -16,8 +17,6 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   List<Product> products = getProductDetails();
 
-  //TODO: GRID OR LIST VIEW / BACK BUTTON.
-
   @override
   Widget build(BuildContext context) {
     return widget.isGrid
@@ -30,75 +29,91 @@ class _ProductCardState extends State<ProductCard> {
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index];
-                return SizedBox(
-                  height: 320,
-                  width: 210,
-                  // color: Colors.amber,
-                  child: Column(
-                    children: [
-                      Card(
-                        elevation: 0,
-                        color: Colors.grey[200],
-                        child: Image.asset(
-                          product.image,
-                          height: 255,
-                          width: 200,
-                        ),
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ProductDetailsScreen(product: product),
                       ),
-                      Gap(6),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              product.title,
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                    );
+                  },
+                  child: Hero(
+                    tag: product.title,
+                    child: SizedBox(
+                      height: 320,
+                      width: 210,
+                      child: Column(
+                        children: [
+                          Card(
+                            elevation: 0,
+                            color: Colors.grey[200],
+                            child: Image.asset(
+                              product.image,
+                              height: 255,
+                              width: 200,
                             ),
-                            Gap(4),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          ),
+                          Gap(6),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  product.price,
+                                  product.title,
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.w700,
                                   ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      product.isPressed = !product.isPressed;
-                                    });
-                                    product.isPressed
-                                        ? showSnackBar(
-                                            context,
-                                            "Item Added to Favourites",
-                                          )
-                                        : showSnackBar(
-                                            context,
-                                            "Item Removed from Favourites",
-                                          );
-                                  },
-                                  icon: product.isPressed
-                                      ? Icon(
-                                          Icons.favorite_rounded,
-                                          color: Colors.red,
-                                        )
-                                      : Icon(Icons.favorite_border_rounded),
+                                Gap(4),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      product.price,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          product.isPressed =
+                                              !product.isPressed;
+                                        });
+                                        product.isPressed
+                                            ? showSnackBar(
+                                                context,
+                                                "Item Added to Favourites",
+                                              )
+                                            : showSnackBar(
+                                                context,
+                                                "Item Removed from Favourites",
+                                              );
+                                      },
+                                      icon: product.isPressed
+                                          ? Icon(
+                                              Icons.favorite_rounded,
+                                              color: Colors.red,
+                                            )
+                                          : Icon(Icons.favorite_border_rounded),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 );
               },
@@ -114,37 +129,54 @@ class _ProductCardState extends State<ProductCard> {
                     horizontal: 8.0,
                     vertical: 16,
                   ),
-                  child: ListTile(
-                    leading: Image.asset(product.image, width: 70, height: 70),
-                    title: Text(
-                      product.title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
+                  child: InkWell(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      ProductDetailsScreen.id,
+                      arguments: product,
                     ),
-                    subtitle: Text(
-                      product.price,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                    child: Hero(
+                      tag: product,
+                      child: ListTile(
+                        leading: Image.asset(
+                          product.image,
+                          width: 70,
+                          height: 70,
+                        ),
+                        title: Text(
+                          product.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        subtitle: Text(
+                          product.price,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              product.isPressed = !product.isPressed;
+                            });
+                            product.isPressed
+                                ? showSnackBar(
+                                    context,
+                                    "Item Added to Favourites",
+                                  )
+                                : showSnackBar(
+                                    context,
+                                    "Item Removed from Favourites",
+                                  );
+                          },
+                          icon: product.isPressed
+                              ? const Icon(Icons.favorite, color: Colors.red)
+                              : const Icon(Icons.favorite_border),
+                        ),
                       ),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          product.isPressed = !product.isPressed;
-                        });
-                        product.isPressed
-                            ? showSnackBar(context, "Item Added to Favourites")
-                            : showSnackBar(
-                                context,
-                                "Item Removed from Favourites",
-                              );
-                      },
-                      icon: product.isPressed
-                          ? const Icon(Icons.favorite, color: Colors.red)
-                          : const Icon(Icons.favorite_border),
                     ),
                   ),
                 );
