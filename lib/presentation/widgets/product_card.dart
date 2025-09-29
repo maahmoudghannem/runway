@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:runway/presentation/screens/product_details_screen.dart';
+import '../screens/product_details_screen.dart';
 import '../../data/product_getter.dart';
 import '../models/product_model.dart';
 import 'snack_bar.dart';
@@ -139,47 +139,44 @@ class _ProductCardState extends State<ProductCard> {
                         ),
                       );
                     },
-                    child: Hero(
-                      tag: product,
-                      child: ListTile(
-                        leading: Image.asset(
-                          product.image,
-                          width: 70,
-                          height: 70,
+                    child: ListTile(
+                      leading: Image.asset(
+                        product.image,
+                        width: 70,
+                        height: 70,
+                      ),
+                      title: Text(
+                        product.title,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
                         ),
-                        title: Text(
-                          product.title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
+                      ),
+                      subtitle: Text(
+                        product.price,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
                         ),
-                        subtitle: Text(
-                          product.price,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        trailing: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              product.isPressed = !product.isPressed;
-                            });
-                            product.isPressed
-                                ? showSnackBar(
-                                    context,
-                                    "Item Added to Favourites",
-                                  )
-                                : showSnackBar(
-                                    context,
-                                    "Item Removed from Favourites",
-                                  );
-                          },
-                          icon: product.isPressed
-                              ? const Icon(Icons.favorite, color: Colors.red)
-                              : const Icon(Icons.favorite_border),
-                        ),
+                      ),
+                      trailing: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            product.isPressed = !product.isPressed;
+                          });
+                          product.isPressed
+                              ? showSnackBar(
+                                  context,
+                                  "Item Added to Favourites",
+                                )
+                              : showSnackBar(
+                                  context,
+                                  "Item Removed from Favourites",
+                                );
+                        },
+                        icon: product.isPressed
+                            ? const Icon(Icons.favorite, color: Colors.red)
+                            : const Icon(Icons.favorite_border),
                       ),
                     ),
                   ),

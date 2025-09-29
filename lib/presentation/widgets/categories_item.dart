@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
 import '../../data/category_getter.dart';
 import '../models/category_model.dart';
 import 'snack_bar.dart';

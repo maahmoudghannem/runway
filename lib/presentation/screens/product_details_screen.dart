@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:runway/presentation/models/product_model.dart';
-import 'package:runway/presentation/widgets/custom_app_bar.dart';
-import 'package:runway/presentation/widgets/snack_bar.dart';
+import '../models/product_model.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/product_accordion.dart';
+import '../widgets/return_card.dart';
+import '../widgets/selection_container.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key, required this.product});
@@ -28,13 +30,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
       body: Stack(
         children: [
-          Container(
-            // color: Colors.grey[200],
-            child: Center(
-              child: Image.asset(widget.product.image, fit: BoxFit.contain),
-            ),
-          ),
-
+          Center(child: Image.asset(widget.product.image, fit: BoxFit.contain)),
           DraggableScrollableSheet(
             initialChildSize: 0.2, // starts at 30% of screen
             minChildSize: 0.09,
@@ -77,7 +73,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        const Gap(20),
+                        const Gap(15),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -88,7 +84,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
-                            // const Gap(240),
                             Row(
                               children: [
                                 IconButton(
@@ -111,62 +106,26 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             ),
                           ],
                         ),
-                        const Gap(25),
-                        Container(
-                          height: 55,
-                          width: 390,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffD9D9D9)),
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Select colour",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        // color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Gap(10),
-                                    SvgPicture.asset(
-                                      "assets/images/icons/arrows.svg",
-                                    ),
-                                  ],
-                                ),
-                                VerticalDivider(
-                                  indent: 10,
-                                  endIndent: 10,
-                                  thickness: 2,
-                                  color: Colors.grey[200],
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Select Size",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        // color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Gap(10),
-                                    SvgPicture.asset(
-                                      "assets/images/icons/arrows.svg",
-                                    ),
-                                  ],
-                                ),
-                              ],
+                        const Gap(20),
+                        const CustomSelectionContainer(),
+                        const Gap(15),
+                        const CustomButton(),
+                        const Gap(15),
+                        const ReturnCard(),
+                        const Gap(20),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 12.0),
+                          child: Text(
+                            "About product",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
+                        const Gap(20),
+                        const ProductAccordion(),
+                        const SizedBox(height: 20),
                       ],
                     ),
                   ),

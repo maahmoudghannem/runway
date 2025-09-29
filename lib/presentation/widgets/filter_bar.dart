@@ -28,7 +28,7 @@ class FilterBar extends StatelessWidget {
               "Filter",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
             ),
-            Gap(15),
+            Gap(12),
             GestureDetector(
               onTap: onTap,
               child: isGrid

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:video_player/video_player.dart';
+
 import '../widgets/categories_item.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/navigation_bar.dart';
-import 'package:video_player/video_player.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

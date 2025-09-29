@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/custom_app_bar.dart';
 import '../widgets/filter_bar.dart';
 import '../widgets/product_card.dart';
@@ -29,7 +30,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         children: [
           Divider(thickness: 2, color: Colors.grey[200]),
           FilterBar(
-            isGrid: isGrid,
+            isGrid: isGrid, // grid or list
             onTap: () => setState(() {
               isGrid = !isGrid;
             }),
