@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:runway/presentation/screens/products_screen.dart';
+import 'package:runway/presentation/widgets/custom_container.dart';
+import 'package:runway/presentation/widgets/recommendations_list.dart';
 import '../models/product_model.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_button.dart';
@@ -32,7 +35,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         children: [
           Center(child: Image.asset(widget.product.image, fit: BoxFit.contain)),
           DraggableScrollableSheet(
-            initialChildSize: 0.2, // starts at 30% of screen
+            initialChildSize: 0.2,
             minChildSize: 0.09,
             maxChildSize: 0.9,
             builder: (context, scrollController) {
@@ -51,18 +54,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 child: SingleChildScrollView(
                   controller: scrollController,
                   child: Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(18),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Center(
-                          child: Container(
+                          child: CustomContainer(
                             width: 42,
                             height: 6,
-                            decoration: BoxDecoration(
-                              color: Color(0xffD9D9D9),
-                              borderRadius: BorderRadius.circular(6),
-                            ),
+                            color: Color(0xffD9D9D9),
                           ),
                         ),
                         const Gap(20),
@@ -125,7 +125,38 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                         const Gap(20),
                         const ProductAccordion(),
-                        const SizedBox(height: 20),
+                        const Gap(20),
+                        Padding(
+                          padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "You might also like",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () => Navigator.pushNamed(
+                                  context,
+                                  ProductsScreen.id,
+                                ),
+                                child: Text(
+                                  "View all",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Gap(20),
+                        RecommendationsList(),
+                        const Gap(20),
                       ],
                     ),
                   ),

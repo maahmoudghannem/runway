@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:runway/presentation/widgets/custom_container.dart';
 
 class ReturnCard extends StatelessWidget {
   const ReturnCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        // TODO: refactor this reused container.
-        border: Border.all(color: Color(0xffD9D9D9)),
-        borderRadius: BorderRadius.circular(5),
-      ),
+    return CustomContainer(
       child: Column(
         children: [
           ListTile(

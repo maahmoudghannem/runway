@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:runway/presentation/widgets/custom_container.dart';
 
 class ProductAccordion extends StatelessWidget {
   const ProductAccordion({super.key});
@@ -16,12 +17,7 @@ class ProductAccordion extends StatelessWidget {
       {"icon": "assets/images/icons/history.svg", "title": "History"},
     ];
     //TODO: make a accordionItem model
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Color(0xffD9D9D9)),
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(5),
-      ),
+    return CustomContainer(
       child: ListView.separated(
         padding: EdgeInsets.zero,
         shrinkWrap: true,

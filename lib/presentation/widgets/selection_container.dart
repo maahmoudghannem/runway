@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runway/presentation/widgets/custom_container.dart';
 import 'selsction_container_body.dart';
 
 class CustomSelectionContainer extends StatelessWidget {
@@ -6,14 +7,9 @@ class CustomSelectionContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomContainer(
       height: 55,
       width: 390,
-      decoration: BoxDecoration(
-        border: Border.all(color: Color(0xffD9D9D9)),
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(5),
-      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
